@@ -1,0 +1,13 @@
+body {
+    padding-top: 0px;
+}
+
+.footer ul {
+    list-style: none;
+    padding-left: 15px;
+}
+
+.footer ul li {
+    display: inline-block;
+    margin-right: 15px;
+}
