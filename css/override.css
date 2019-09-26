@@ -11,3 +11,31 @@ body {
     display: inline-block;
     margin-right: 15px;
 }
+
+.button-blue-dark {
+    color: #fff;
+    background-color: #137991;
+    display: block;
+    margin-bottom: 10px;
+    float: left; 
+    clear: left;
+
+}
+
+.button-blue-medium {
+    color: #000;
+    background-color: #15A3A6;
+    display: block;
+    margin-bottom: 10px;
+    float: left; 
+    clear: left;
+}
+
+.button-blue-light {
+    color: #000;
+    background-color: #6DD2DA;
+    display: block;
+    margin-bottom: 10px;
+    float: left; 
+    clear: left;
+}
