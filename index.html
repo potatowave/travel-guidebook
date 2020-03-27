@@ -11,47 +11,60 @@
     <link href="css/override.css" rel="stylesheet" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,500|Nunito+Sans:300,400,600,700" rel="stylesheet">
+    <script src="https://use.fontawesome.com/f1bb2602f5.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148245093-2"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-148245093-2'); </script>
     <title>Travel Guidebook</title>
 </head>
 
 <body>
-    <div>
-        <div style="position: fixed; z-index: 99999; top: 0px; left: 45%;"><a
+        <div>
+            <div style="position: fixed; z-index: 99999; top: 0px; left: 45%;"><a
                 class="sr-only sr-only-focusable aurora-skip" href="#main-content">Skip to main content</a>
         </div>
         <header class="shadow-sm">
-            <div class="" style="background-color: #FAF2CC; text-align: center;">
-                <div class="container py-2">
+            <div class="" style="background-color: #FAF2CC; text-align: left; vertical-align: middle;">
+                <div class="container py-3">
+                    <div style="width: 2em ;display: inline-block; padding-right: .5em; vertical-align: middle;">
+                        <a onclick="showHideBannerContent()" href="#">
+                            <i id="chevron" class="fa fa-chevron-right" style="color: #000; font-size: 1.3em"></i>
+                        </a>
+                    </div>
+
                     <button
-                        style="background: #FEC04F; border: 1px solid #000000; border-radius: 20px;"><strong>ALPHA</strong></button>
-                    <span>&nbsp;&nbsp;This is a prototype. This site will change as we test ideas.</span>
+                        style="background: #FEC04F; border: 1px solid #000000; border-radius: 20px; margin-right: 10px;"><strong>ARCHIVED</strong></button>
+                    <span>This prototype is no longer under development.</span>
+
+                    <div id="banner-content">
+                        <br>
+                        <p style="margin-bottom: .2em;">This prototype is no longer being maintained as of
+                            March 27, 2020. The information provided may no longer be accurate. Please
+                            consult the <a target="_blank"
+                                href="https://rehelv-acrd.tpsgc-pwgsc.gc.ca/acrds/index-eng.aspx">Accommodation
+                                and Car Rental Directory</a> and the
+                            <a target="_blank" href="https://www.njc-cnm.gc.ca/directive/d10/en">National Joint Council Travel
+                                Directive</a> for the most up-to-date information.</p>
+                            <p style="margin-bottom: .2em;">For more information on the NextGen Travel program, please visit
+                            <a target="_blank"
+                                href="http://gcintranet.tpsgc-pwgsc.gc.ca/gc/svp-sts/postes-roles-eng.html">http://gcintranet.tpsgc-pwgsc.gc.ca/gc/svp-sts/postes-roles-eng.html</a>.</p>
+                            <p style="margin-bottom: .2em;">If you are interested in contributing to this project, the source code is
+                            available on Github: <a target="_blank"
+                                href="https://github.com/nextgentravel/travel-estimator">https://github.com/nextgentravel/travel-estimator</a></p>
+                    </div>
                 </div>
             </div>
-
-            <div style="background-color: #002D42; border-bottom: 10px solid #137991;">
+            <div style="background-color: #137991; border-bottom: 10px solid #002D42;">
                 <div class="container py-2 h-100" style="color: #fff;">
                     <div class="row">
                         <div class="col-8">
                             <h4 class="mb-3 mt-3 h4">
-                                Travel Guidebook
-                            </h4>
-                            <h4 class="mb-3 mt-3 h4">
-                                Guide de voyage
+                                Domestic Travel Estimator
                             </h4>
                         </div>
                         <div class="col-4 align-self-center">
                             <span class="float-right d-none d-md-block">
-                                <div class="search-form search-form-round dropdown" style="width: 300px;">
-                                    <label for="search-desktop" class="sr-only">Search</label>
-                                    <input id="search-desktop" placeholder="Search" aria-owns="results-desktop"
-                                        type="text" class="form-control form-control" value="">
-                                </div>
                             </span>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </header>
@@ -121,6 +134,41 @@
         </w-screen>
     </div>
     <script src="js/aurora.min.js"></script>
+    <script>
+        function setInitial(showBanner) {
+            let x = document.getElementById("banner-content");
+            if (showBanner === 'true') {
+                x.style.display = "block";
+                chevron.classList.remove('fa-chevron-right')
+                chevron.classList.add('fa-chevron-down')
+            } else {
+                x.style.display = "none";
+                chevron.classList.remove('fa-chevron-down')
+                chevron.classList.add('fa-chevron-right')
+            }
+        }
+
+        function showHideBannerContent() {
+            let x = document.getElementById("banner-content");
+            let chevron = document.getElementById("chevron");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                chevron.classList.remove('fa-chevron-right')
+                chevron.classList.add('fa-chevron-down')
+                localStorage.setItem("banner-content", true);
+            } else {
+                x.style.display = "none";
+                chevron.classList.remove('fa-chevron-down')
+                chevron.classList.add('fa-chevron-right')
+                localStorage.setItem("banner-content", false);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function(){
+            let showBanner = localStorage.getItem("banner-content") || 'true';
+            setInitial(showBanner);
+        });
+    </script>
 </body>
 
 </html>

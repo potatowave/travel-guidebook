@@ -44,3 +44,11 @@ body {
     background-color: #002D42 !important;
     color: #fff !important;
 }
+
+.toggle-content {
+	display: none;
+}
+
+.toggle-content.is-visible {
+	display: block;
+}
